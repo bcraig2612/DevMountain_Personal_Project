@@ -1,0 +1,1 @@
+SELECT * FROM user_routine WHERE user_id = $1;

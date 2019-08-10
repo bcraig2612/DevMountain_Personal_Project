@@ -1,0 +1,1 @@
+SELECT * FROM default_routine WHERE default_routine_id = $1;

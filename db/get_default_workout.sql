@@ -1,0 +1,1 @@
+SELECT * FROM default_workout WHERE default_workout_id = $1;
