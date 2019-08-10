@@ -3,7 +3,6 @@
         "antd",
         "browserslist",
         "coverflow",
-        "mdbreact",
-        "react"
+        "mdbreact"
     ]
 }
