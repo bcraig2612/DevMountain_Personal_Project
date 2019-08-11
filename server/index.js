@@ -6,10 +6,25 @@ const app = express();
 
 app.use(express.json());
 
-const { login, logout, register, userSession } = require('./controller/authController');
-const { getUserRoutines, postUserRoutine, getUserRoutineWorkouts, removeUserRoutine } = require('./controller/routineController');
-const { getUser, getAllUsers, updateDetails, updateInfo } = require('./controller/userController');     
-const { getDefaultWorkout, allDefaultWorkouts } = require('./controller/workoutController');
+const { login, 
+        logout, 
+        register, 
+        userSession } = require('./controller/authController');
+const { getUserRoutines, 
+        postUserRoutine, 
+        getUserRoutineWorkouts, 
+        removeUserRoutine, 
+        postDefaultRoutine,
+        removeDefaultRoutine } = require('./controller/routineController');
+const { getUser, 
+        getAllUsers, 
+        updateDetails, 
+        updateInfo } = require('./controller/userController');     
+const { getDefaultWorkout, 
+        allDefaultWorkouts, 
+        postDefaultWorkout,
+        removeDefaultWorkout,
+        removeUserWorkout } = require('./controller/workoutController');
                 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
                 
@@ -27,26 +42,31 @@ app.use(session({
     }
   })
 );
-// auth endpoints 
+// auth endpoints (4)
 app.post('/api/login', login);
 app.post('/api/register', register);
 app.get('/api/user_session', userSession);
 app.get('/api/logout', logout);
 
-// user endpoints
+// user endpoints (4)
 app.get('/api/get_user/:user_id', getUser);
 app.get('/api/get_all_users', getAllUsers);
 app.patch('/api/update_user_details/:user_id', updateDetails);
 app.patch('/api/update_user_info/:user_id', updateInfo);
 
-// user_routine endpoints 
+// routine endpoints (6)
 app.get('/api/user_routine/:user_id', getUserRoutines);
 app.get('/api/user_routines/:user_routine_id/:user_workout_id', getUserRoutineWorkouts);
 app.post('/api/user_routine', postUserRoutine);
+app.post('/api/default_routine', postDefaultRoutine);
 app.delete('/api/delete_user_routine/:user_routine_id', removeUserRoutine);
+app.delete('/api/delete_default_routine/:default_routine_id', removeDefaultRoutine);
 
-// default_workout endpoints
+// workout endpoints (5)
 app.get('/api/default_workout/:default_workout_id', getDefaultWorkout);
 app.get('/api/default_workout', allDefaultWorkouts);
+app.post('/api/default_workout', postDefaultWorkout);
+app.delete('/api/delete_default_workout/:default_workout_id', removeDefaultWorkout);
+app.delete('/api/delete_user_workout/:user_workout_id', removeUserWorkout);
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`));

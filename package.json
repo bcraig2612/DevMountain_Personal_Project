@@ -1,6 +1,7 @@
 {
   "name": "personal-project",
   "version": "0.1.0",
+  "main": "server/",
   "private": true,
   "dependencies": {
     "antd": "^3.21.4",
