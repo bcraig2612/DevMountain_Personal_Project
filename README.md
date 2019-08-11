@@ -1,68 +1,143 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fitness Maestro
 
-## Available Scripts
+## User_Side
 
-In the project directory, you can run:
+### Dependencies
+- axios 
+- react
+- react-router-dom (BrowserRouter)
+- redux
+- react-redux
+- node-sass (not required)
+- react-icons/fa (font)
+- http-proxy-middleware
+- redux-promise-middleware
 
-### `npm start`
+### Routes
+/ --> Login
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+/Register --> Register.js
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+/ForumSubmit --> ForumSubmit.js
 
-### `npm test`
+/ForumView --> ForumView.js
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+/RegimenCreator --> RegimenCreator.js
 
-### `npm run build`
+/MuscleGroups/:routine_id/:muscle_groups --> MuscleGroups.js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+/UserPage --> UserPage.js
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+/UserStats --> UserStats.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+/Regimen/:regimen_id --> Regimen.js
 
-### `npm run eject`
+/Regimens --> Regimens.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+/BMI --> BMI.js
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User_Side File Structure
+- src/
+    - components/
+        - Login/
+            - Login.js
+            - Login.css / .scss
+        - Register/
+            - Register.js
+            - Register.css / .scss
+        - UserStats/
+            - UserStats.js
+            - UserStats.css / .scss
+        - Regimen/
+            - Regimen.js
+            - Regimen.css / .scss
+        - Regimens/
+            - Regimens.js
+            - Regimens.css / .scss
+        - BMI/
+            - BMI.js
+            - BMI.css / .scss
+        - UserPage/
+            - UserPage.js
+            - UserPage.css / .scss  
+        - ForumView/
+            - ForumView.js
+            - ForumView.css / .scss
+        - ForumSubmit/
+            - ForumSubmit.js
+            - ForumSubmit.css / .scss
+        - RegimenCreator/
+            - RegimenCreator.js
+            - RegimenCreator.css / .scss
+        - MuscleGroups/
+            - MuscleGroups.js
+            - MuscleGroups.css / .scss
+    - App.js
+    - App.css
+    - App.test.js
+    - index.js
+    - index.css
+    - reset.css
+    - setupProxy.js
+    - serviceWorker.js
+    - Router.js
+    - redux/
+        - store.js
+        - reducer.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Server_Side
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Dependencies
+- express
+- express-session
+- massive
+- dotenv
+- bcrypt
 
-## Learn More
+### Server File Structure
+- server/
+    - index.js
+    - controller /
+        - authController.js
+        - workoutsController.js
+    - middlewares /
+        - middleware.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Endpoints
+**Exercise Endpoints** 
+- app.get("/api/workouts", getExercises);
+- app.post("/api/workouts/:user_id", addExercise);
+- app.put("/api/workouts/:id", updateExercise);
+- app.delete("/api/workouts/:exercise_id/:user_id", deleteUserExercise)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Auth Endpoints**
+- app.post('/api/login', login);
+- app.get('/api/logout', logout);
+- app.post('/api/register', register);
+- app.get('/api/user_session', userSession);
+- app.get('/api/users', getUsers);
+- app.delete('/api/obliterate', deleteUser);
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Database
+- db /
+    -add_default_workout.sql
+    -add_user_workout.sql
+    -check_if_user_exists.sql
+    -create_regimen_workout.sql
+    -create_routine.sql
+    -create_user.sql
+    -delete_routine.sql
+    -delete_user.sql
+    -delete_user_workout.sql
+    -filter_workouts.sql
+    -get_routine.sql
+    -get_routine_workouts.sql
+    -get_routines.sql
+    -get_user.sql
+    -get_user_workout.sql
+    -get_workout.sql
+    -get_workouts.sql
+    -seed.sql
+    -update_user.sql
+    -update_user_stats.sql
+    -user_search.sql
