@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 
 module.exports = {
+  // ( POST REQUEST )
   login: async (req, res, next) => {
     try {
       console.log('HIT LOGIN');
@@ -27,6 +28,7 @@ module.exports = {
       res.status(500).json(err);
     }
 },
+    // ( POST REQUEST )
     register: (req, res, next) => {
         try {
           console.log('HIT Register');
@@ -67,11 +69,13 @@ module.exports = {
           res.status(500).json(err);
         }
     },
+    // ( GET REQUEST )
     logout: (req, res, next) => {
         console.log("It's ALIVE !!!");
         req.session.destroy();
         return res.status(200).send('Successfully Logged Out!');
     },
+    // ( GET REQUEST )
     // use this for refresh purposes for the user to navigate through components without needing to repeatedly log back in. 
     userSession: (req, res, next) => {
         res.status(200).send(req.session.user);

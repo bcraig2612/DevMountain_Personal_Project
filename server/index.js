@@ -10,19 +10,23 @@ const { login,
         logout, 
         register, 
         userSession } = require('./controller/authController');
+        
 const { getUserRoutines, 
         postUserRoutine, 
         getUserRoutineWorkouts, 
         removeUserRoutine, 
-        postDefaultRoutine,
+        postDefaultRoutine, 
         removeDefaultRoutine } = require('./controller/routineController');
+
 const { getUser, 
         getAllUsers, 
         updateDetails, 
         updateInfo } = require('./controller/userController');     
+
 const { getDefaultWorkout, 
         allDefaultWorkouts, 
         postDefaultWorkout,
+        postUserWorkout, 
         removeDefaultWorkout,
         removeUserWorkout } = require('./controller/workoutController');
                 
@@ -62,11 +66,12 @@ app.post('/api/default_routine', postDefaultRoutine);
 app.delete('/api/delete_user_routine/:user_routine_id', removeUserRoutine);
 app.delete('/api/delete_default_routine/:default_routine_id', removeDefaultRoutine);
 
-// workout endpoints (5)
+// workout endpoints (6)
 app.get('/api/default_workout/:default_workout_id', getDefaultWorkout);
 app.get('/api/default_workout', allDefaultWorkouts);
 app.post('/api/default_workout', postDefaultWorkout);
+app.post('/api/user_workout', postUserWorkout);
 app.delete('/api/delete_default_workout/:default_workout_id', removeDefaultWorkout);
-app.delete('/api/delete_user_workout/:user_workout_id', removeUserWorkout);
+app.delete('/api/delete_user_workout/:user_workout_id/:user_routine_id', removeUserWorkout);
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`));

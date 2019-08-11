@@ -12,6 +12,7 @@
         "mysessionsecret",
         "p",
         "postgres",
+        "resave",
         "vgdxtvhfwmghvs"
     ]
 }
