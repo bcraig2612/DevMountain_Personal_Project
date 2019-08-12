@@ -11,10 +11,12 @@
         "crossorigin",
         "d",
         "deadlift",
+        "devtools",
         "mdbreact",
         "mysessionsecret",
         "p",
         "postgres",
+        "reactstrap",
         "resave",
         "vgdxtvhfwmghvs"
     ]

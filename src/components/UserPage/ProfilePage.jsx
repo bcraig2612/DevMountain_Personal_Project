@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import UserDetails from './UserDetails';
 import UserInfo from './UserInfo';
+import  BMICalculator  from './BMICalculator';
 // import UserRoutine from './UserRoutine';
-// import  BMI  from './BMI';
 
 export default class ProfilePage extends Component {
     render() {
@@ -10,8 +10,7 @@ export default class ProfilePage extends Component {
             <div className="container">
                 <UserDetails/>
                 <UserInfo/>
-                {/* <UserRoutine />
-                <BMI /> */}
+                <BMICalculator />
             </div>
         )
     }

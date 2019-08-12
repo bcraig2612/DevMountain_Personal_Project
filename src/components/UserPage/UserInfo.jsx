@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setRegisterUser } from '../../redux/user_register';
 import './Styles/UserInfo.scss';
 
@@ -22,7 +21,6 @@ class UserInfo extends Component {
     componentDidMount() {
         axios.get('/api/check_logged_in').then().catch(res => {
             console.log('error');
-            this.props.history.push('/ProfilePage');
         });
         this.getUser();
     }
@@ -117,7 +115,7 @@ class UserInfo extends Component {
                     <input onChange={(e) => universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                 </div>     
                 <div className='info-button'>
-                    <Link to='/ProfilePage'><button onClick={() => this.updateInfo()} className='update-info'> Submit </button> </Link>
+                   <button onClick={() => this.updateInfo()} className='update-info'> Submit </button>
                 </div>
             </div>
         </div>                                 

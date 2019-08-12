@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setUserProfile } from '../../redux/user_register';
 import './Styles/UserDetails.scss';
 
@@ -21,7 +20,6 @@ export class UserDetails extends Component {
     componentDidMount() {
         axios.get('/api/check_logged_in').then().catch(res => {
             console.log('error');
-            this.props.history.push('/ProfilePage');
         });
         this.getUser();
     }
@@ -173,7 +171,7 @@ export class UserDetails extends Component {
                     <input onChange={(e) => this.universalChangeHandler('deadlift_max', e.target.value)} type='number' className='details-input' value={deadlift_max} />
                 </div>           
                 <div className='details-button'>
-                    <Link to='/ProfilePage'><button onClick={() => this.updateDetails()} className='update-details'> Submit </button> </Link>
+                    <button onClick={() => this.updateDetails()} className='update-details'> Submit </button> 
                 </div>
             </div>
         </div>
