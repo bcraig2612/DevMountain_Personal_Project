@@ -6,6 +6,9 @@ module.exports = {
        // console.log('Hit user_regimens endpoint.');
         db.get_user_routine_workout(user_routine_id, user_workout_id).then(workout => {
             res.status(200).send(workout);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
         });
     },
     // ( GET REQUEST )
@@ -15,7 +18,10 @@ module.exports = {
         // console.log('Hit user_workout endpoint.');
         db.get_user_routine(user_id).then(routine => {
             res.status(200).send(routine);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( POST REQUEST )
     postDefaultRoutine: (req, res, next) => {
@@ -32,7 +38,10 @@ module.exports = {
                 how_to )
                 .then( routine => {
                     res.status(200).send(routine)
-                })
+                }).catch(err => {
+                    console.log(err)
+                    res.status(500).send()
+                });
     },
     // ( POST REQUEST )
     postUserRoutine: (req, res, next) => {
@@ -52,7 +61,10 @@ module.exports = {
                 user_id )
                 .then( routine => {
             res.status(200).send(routine);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( DELETE REQUEST )
     removeUserRoutine: (req, res, next) => {
@@ -61,7 +73,10 @@ module.exports = {
        // console.log('Hit remove_user_regimen endpoint.');
         db.delete_user_routine(user_routine_id).then(routine => {
             res.status(200).send(routine);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( DELETE REQUEST )
     removeDefaultRoutine: (req, res, next) => {
@@ -69,6 +84,9 @@ module.exports = {
         const db = req.app.get('db');
         db.delete_default_routine(default_routine_id).then(routine => {
             res.status(200).send(routine);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     }
 }

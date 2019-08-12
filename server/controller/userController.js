@@ -1,22 +1,30 @@
 module.exports = {
     getUser: (req, res, next) => {
-        const { user_id } = req.params;
+        console.log('HIT getUser');
         const db = req.app.get("db");
-        db.get_user(user_id).then(user => {
-            res.status(200).send(user);
-        })
+        const userID = req.session.user.user_id;
+        db.get_user([userID]).then(user => {
+            res.status(200).send(user[0]);
+        }).catch((err) => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     getAllUsers: (req, res, next) => {
         const db = req.app.get("db");
         db.get_all_users().then(users => {
             res.status(200).send(users);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     updateDetails: (req, res, next) => {
         const { user_id } = req.params;
         const db = req.app.get("db");
         const {
-            height, 
+            height_feet,
+            height_inches, 
             weight, 
             bmi, 
             body_fat_percentage, 
@@ -32,7 +40,8 @@ module.exports = {
             deadlift_max,
             } = req.body;
           db.update_user_details(
-            height, 
+            height_feet,
+            height_inches, 
             weight, 
             bmi, 
             body_fat_percentage, 
@@ -48,7 +57,10 @@ module.exports = {
             deadlift_max,
             user_id ).then(users => {
             res.status(200).send(users);
-          });
+          }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     updateInfo: (req, res, next) => {
         const { user_id } = req.params;
@@ -72,8 +84,10 @@ module.exports = {
             email,
             user_id).then(users => {
             res.status(200).send(users);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
         });
-
     }
 };
 

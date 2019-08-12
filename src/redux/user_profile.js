@@ -1,6 +1,7 @@
 const initialState = {
     user_id: null,
-    height: 0,
+    height_feet: 0,
+    height_inches: 0,
     weight: 0,
     bmi: 0,
     body_fat_percentage: 0,
@@ -17,7 +18,8 @@ const initialState = {
 }
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const HEIGHT = 'HEIGHT'
+const HEIGHT_FEET = 'HEIGHT_FEET'
+const HEIGHT_INCHES = 'HEIGHT_INCHES'
 const WEIGHT = 'WEIGHT'
 const BMI = 'BMI'
 const BODY_FAT_PERCENTAGE = 'BODY_FAT_PERCENTAGE'
@@ -38,8 +40,10 @@ export default function reducer(state = initialState, action) {
         case SET_USER_PROFILE:
             console.log('this is the user who is updating the profile', payload);
             return { ...state, profile: payload };
-        case HEIGHT:
-            return { ...state, height: payload };
+        case HEIGHT_FEET:
+            return { ...state, height_feet: payload };
+        case HEIGHT_INCHES:
+            return { ...state, height_inches: payload };
         case WEIGHT:
             return { ...state, weight: payload };
         case BMI:
@@ -78,10 +82,16 @@ export function setUserProfile(profile) {
         payload: profile
     }
 }
-export function insertHeight(height) {
+export function insertHeightFeet(height_feet) {
     return {
-        type: HEIGHT,
-        payload: height
+        type: HEIGHT_FEET,
+        payload: height_feet
+    }
+}
+export function insertHeightInches(height_inches) {
+    return {
+        type: HEIGHT_INCHES,
+        payload: height_inches
     }
 }
 export function insertWeight(weight) {

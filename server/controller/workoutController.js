@@ -6,6 +6,9 @@ module.exports = {
         // console.log('Hit default_workouts endpoint.');
         db.get_default_workout(default_workout_id).then(workout => {
             res.status(200).send(workout);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
         });
     },
     // (GET REQUEST)    
@@ -14,7 +17,10 @@ module.exports = {
         // console.log('Hit grab_by_muscle_group endpoint.');
         db.get_default_workouts().then(workout => {
             res.status(200).send(workout);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( POST REQUEST )
     postUserWorkout: (req, res, next) => {
@@ -34,7 +40,10 @@ module.exports = {
         )
         .then( workout => {
             res.status(200).send(workout);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( POST REQUEST )
     postDefaultWorkout: (req, res, next) => {
@@ -59,7 +68,10 @@ module.exports = {
             default_routine_id ) 
             .then( workout => {
                 res.status(200).send(workout);
-            })
+            }).catch(err => {
+                console.log(err)
+                res.status(500).send()
+            });
     },
     // ( DELETE REQUEST )
     removeDefaultWorkout: (req, res, next) => {
@@ -68,7 +80,10 @@ module.exports = {
         db.delete_default_workout(default_workout_id)
         .then(workout => {
             res.status(200).send(workout);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     },
     // ( DELETE REQUEST )
     removeUserWorkout: (req, res, next) => {
@@ -77,6 +92,9 @@ module.exports = {
         db.delete_user_workout(user_workout_id, user_routine_id)
         .then(workout => {
             res.status(200).send(workout);
-        })
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
     }
 };

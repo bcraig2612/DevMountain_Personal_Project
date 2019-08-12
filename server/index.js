@@ -46,6 +46,11 @@ app.use(session({
     }
   })
 );
+
+// checkLoggedIn endpoint (1)
+const checkLoggedIn = require('./middleware')
+app.get('/api/check_logged_in', checkLoggedIn);
+
 // auth endpoints (4)
 app.post('/auth/login', login);
 app.post('/auth/register', register);
@@ -53,7 +58,7 @@ app.get('/auth/user_session', userSession);
 app.get('/auth/logout', logout);
 
 // user endpoints (4)
-app.get('/api/get_user/:user_id', getUser);
+app.get('/api/get_user', getUser);
 app.get('/api/get_all_users', getAllUsers);
 app.patch('/api/update_user_details/:user_id', updateDetails);
 app.patch('/api/update_user_info/:user_id', updateInfo);

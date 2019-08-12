@@ -32,18 +32,24 @@ class UserInfo extends Component {
 
     }
 
+    componentDidMount() {
+        axios.get('/api/check_logged_in').then().catch(res => {
+            console.log('error');
+            this.props.history.push('/ProfilePage');
+        });
+        this.getUser();
+    }
+    
+    getUser() {
+        axios.get('/api/get_user').then(res => {
+            this.setState({ user: res.data });
+        });
+    }
+    
     userSession() {
         axios.get("/auth/user_session").then(res => {
             this.props.getUser(res.data);
         });
-    }
-
-    getUser() {
-        axios.get('/api/get_user/:user_id').then(res => {
-            console.log(res.data)
-            this.props.user_id(res.data)
-        })
-        console.log(this.props)
     }
 
     updateInfo() {

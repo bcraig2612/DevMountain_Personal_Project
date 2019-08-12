@@ -3,7 +3,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setUserProfile,
-         insertHeight,
+         insertHeightFeet,
+         insertHeightInches,
          insertWeight,
          insertBMI,
          insertBodyFatPercentage,
@@ -23,7 +24,8 @@ export class UserDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            height: null,
+            height_feet: null,
+            height_inches: null,
             weight: null,
             bmi: null,
             body_fat_percentage: null,
@@ -46,26 +48,29 @@ export class UserDetails extends Component {
     }
 
     componentDidMount() {
-        this.userSession();
+        axios.get('/api/check_logged_in').then().catch(res => {
+            console.log('error');
+            this.props.history.push('/ProfilePage');
+        });
+        this.getUser();
     }
-
+    
+    getUser() {
+        axios.get('/api/get_user').then(res => {
+            this.setState({ user: res.data });
+        });
+    }
+    
     userSession() {
         axios.get("/auth/user_session").then(res => {
             this.props.getUser(res.data);
         });
     }
 
-    getUser() {
-        axios.get('/api/get_user/:user_id').then(res => {
-            console.log(res.data)
-            this.props.user_id(res.data)
-        })
-        console.log(this.props)
-    }
-
     updateDetails() {
         const {
-            height,
+            height_feet,
+            height_inches,
             weight,
             bmi,
             body_fat_percentage,
@@ -80,7 +85,8 @@ export class UserDetails extends Component {
             squat_max,
             deadlift_max } = this.state;
             axios.post('/api/update_user_details/:user_id', {
-                height: height,
+                height_feet: height_feet,
+                height_inches: height_inches,
                 weight: weight,
                 bmi: bmi,
                 body_fat_percentage: body_fat_percentage,
@@ -108,7 +114,8 @@ export class UserDetails extends Component {
 
     render() {
         const {
-            height,
+            height_feet,
+            height_inches,
             weight,
             bmi,
             body_fat_percentage,
@@ -133,8 +140,12 @@ export class UserDetails extends Component {
                     <h2> User Details </h2>
                 </div>                  
                 <div>
-                    Height:
-                    <input onChange={(e) => insertHeight('height', e.target.value)} type='text' className='details-input' value={height} />
+                    Height Feet:
+                    <input onChange={(e) => insertHeightFeet('height_feet', e.target.value)} type='text' className='details-input' value={height_feet} />
+                </div>                               
+                <div>
+                    Height Inches:
+                    <input onChange={(e) => insertHeightInches('height_inches', e.target.value)} type='text' className='details-input' value={height_inches} />
                 </div>                               
                 <div>
                     Weight:
@@ -199,7 +210,8 @@ export class UserDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        height: state.height,
+        height_feet: state.height_feet,
+        height_inches: state.height_inches,
         weight: state.weight, 
         bmi: state.bmi,
         body_fat_percentage: state.body_fat_percentage,
@@ -218,7 +230,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     setUserProfile: setUserProfile,
-    insertHeight: insertHeight,
+    insertHeightFeet: insertHeightFeet,
+    insertHeightInches: insertHeightInches,
     insertWeight: insertWeight,
     insertBMI: insertBMI,
     insertBodyFatPercentage: insertBodyFatPercentage,

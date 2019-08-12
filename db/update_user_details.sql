@@ -1,17 +1,18 @@
 UPDATE users
 SET
-    height=$1, 
-    weight=$2, 
-    bmi=$3, 
-    body_fat_percentage=$4, 
-    neck_measurement=$5, 
-    shoulder_measurement=$6, 
-    upper_arms_measurement=$7, 
-    chest_measurement = $8, 
-    waist_measurement = $9, 
-    thighs_measurement = $10, 
-    calves_measurement = $11,
-    bench_press_max = $12, 
-    squat_max = $13, 
-    deadlift_max = $14
-WHERE user_id = $15
+    height_feet=$1,
+    height_inches=$2, 
+    weight=$3, 
+    bmi=$4, 
+    body_fat_percentage=$5, 
+    neck_measurement=$6, 
+    shoulder_measurement=$7, 
+    upper_arms_measurement=$8, 
+    chest_measurement = $9, 
+    waist_measurement = $10, 
+    thighs_measurement = $11, 
+    calves_measurement = $12,
+    bench_press_max = $13, 
+    squat_max = $14, 
+    deadlift_max = $15
+WHERE user_id = $16

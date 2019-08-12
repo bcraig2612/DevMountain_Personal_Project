@@ -29,6 +29,14 @@ class Register extends Component {
         this.universalChangeHandler = this.universalChangeHandler.bind(this);
     }
 
+    componentDidMount() {
+        axios.get('/auth/user_session').then(res => {
+            console.log(res.data)
+            this.props.setRegisterUser(res.data)
+        })
+        console.log(this.props)
+    }
+
     register() {
         const { email, 
                 first_name, 
