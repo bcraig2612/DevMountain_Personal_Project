@@ -30,11 +30,24 @@ class Register extends Component {
     }
 
     register() {
-        const { email, first_name, last_name, user_name, password, sex, profile_picture } = this.state;
-        axios.post('/auth/register', { user_name: user_name, password: password, email: email, first_name: first_name, last_name: last_name, profile_picture: profile_picture, sex: sex })
-        .then( res => {
-            this.props.setRegisterUser(res.data);
-            this.props.history.push('/UserPage');
+        const { email, 
+                first_name, 
+                last_name, 
+                user_name, 
+                password, 
+                sex, 
+                profile_picture } = this.state;
+        axios.post('/auth/register', { 
+            user_name: user_name, 
+            password: password, 
+            email: email, 
+            first_name: first_name, 
+            last_name: last_name, 
+            profile_picture: profile_picture, 
+            sex: sex })
+            .then( res => {
+                this.props.setRegisterUser(res.data);
+                this.props.history.push('/ProfilePage');
         })
     }
 
@@ -94,7 +107,7 @@ class Register extends Component {
                                 <input onChange={(e) => insertProfilePicture('profile_picture', e.target.value)} type='text' className='register-input' value={profile_picture} />
                             </div>        
                             <div className='submit-button'>
-                                <Link to='/UserPage'><button onClick={() => this.register()} className='register-button'> Submit </button> </Link>
+                                <Link to='/ProfilePage'><button onClick={() => this.register()} className='register-button'> Submit </button> </Link>
                             </div>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ class Login extends Component {
                     alert(res.data.message)
                 } else {
                     this.props.setLoginUser(res.data);
-                    this.props.history.push('/UserPage');
+                    this.props.history.push('/ProfilePage');
                 }
             })
         }
@@ -77,7 +77,7 @@ class Login extends Component {
                                     <input onChange={(e) => insertEmail('email', e.target.value)} type='text' className='user-email' value={email} />
                                 </div>
                                 <div className='button-group'>
-                                    <Link to='/UserPage'><button onClick={() => this.login()} className='login-button'> Login </button> </Link>
+                                    <Link to='/ProfilePage'><button onClick={() => this.login()} className='login-button'> Login </button> </Link>
                                     <Link to='/Register'><button className='register-button'> Register </button></Link>
                                 </div>      
                             </div>
