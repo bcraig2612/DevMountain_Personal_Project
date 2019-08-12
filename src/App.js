@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-
-import Routes from './Routes';
+import Routes from './routes';
 
 export default class App extends Component {
   render() {

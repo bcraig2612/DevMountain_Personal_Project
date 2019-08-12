@@ -47,10 +47,10 @@ app.use(session({
   })
 );
 // auth endpoints (4)
-app.post('/api/login', login);
-app.post('/api/register', register);
-app.get('/api/user_session', userSession);
-app.get('/api/logout', logout);
+app.post('/auth/login', login);
+app.post('/auth/register', register);
+app.get('/auth/user_session', userSession);
+app.get('/auth/logout', logout);
 
 // user endpoints (4)
 app.get('/api/get_user/:user_id', getUser);
