@@ -2,14 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setRegisterUser,
-         insertEmail,
-         insertPassword,
-         insertSex,
-         insertProfilePicture,
-         insertUserName,
-         insertFirstName,
-         insertLastName } from '../../redux/user_register';
+import { setRegisterUser } from '../../redux/user_register';
 import './Styles/Register.scss';
 
 class Register extends Component {
@@ -37,7 +30,7 @@ class Register extends Component {
         console.log(this.props)
     }
 
-    register() {
+    async register() {
         const { email, 
                 first_name, 
                 last_name, 
@@ -45,7 +38,8 @@ class Register extends Component {
                 password, 
                 sex, 
                 profile_picture } = this.state;
-        axios.post('/auth/register', { 
+        console.log(this.state);
+        await axios.post('/auth/register', { 
             user_name: user_name, 
             password: password, 
             email: email, 
@@ -54,9 +48,10 @@ class Register extends Component {
             profile_picture: profile_picture, 
             sex: sex })
             .then( res => {
+                console.log(res);
                 this.props.setRegisterUser(res.data);
                 this.props.history.push('/ProfilePage');
-        })
+        });
     }
 
     universalChangeHandler(property, value) {
@@ -72,7 +67,7 @@ class Register extends Component {
                 last_name,
                 sex,
                 profile_picture,
-                password } = this.props;
+                password } = this.state;
         return (
             <div className='register-page'>
                         <div> 
@@ -84,38 +79,40 @@ class Register extends Component {
                             </div>                  
                             <div>
                                 Username:
-                                <input onChange={(e) => insertUserName('user_name', e.target.value)} type='text' className='register-input' value={user_name} />
+                                <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='register-input' value={user_name} />
                             </div>                               
                             <div>
                                 Email:
-                                <input onChange={(e) => insertEmail('email', e.target.value)} type='text' className='register-input' value={email} />
+                                <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='text' className='register-input' value={email} />
                             </div>                               
                             <div>
                                 Password:
-                                <input onChange={(e) => insertPassword('password', e.target.value)} type='password' className='register-input' value={password} />
+                                <input onChange={(e) => this.universalChangeHandler('password', e.target.value)} type='password' className='register-input' value={password} />
                             </div>
                             <div>
                                 First Name:
-                                <input onChange={(e) => insertFirstName('first_name', e.target.value)} type='text' className='register-input' value={first_name} />
+                                <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='register-input' value={first_name} />
                             </div>                              
                             <div>
                                 Last Name:
-                                <input onChange={(e) => insertLastName('last_name', e.target.value)} type='text' className='register-input' value={last_name} />
+                                <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='register-input' value={last_name} />
                             </div>                 
                             <div>
                                 Sex:
-                                <select onChange={(e) => insertSex('sex', e.target.value)} name="sex" id="sex">
-                                    <option value="" selected="selected"> Male / Female </option>
-                                    <option value={sex}> Male </option>
-                                    <option value={sex}> Female </option>
+                                <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
+                                    <option defaultValue="Male / Female" selected={true}> Male / Female </option>
+                                    <option value="Male"> Male </option>
+                                    <option value="Female"> Female </option>
                                 </select>
                             </div>
                             <div>
                                 Profile Picture:
-                                <input onChange={(e) => insertProfilePicture('profile_picture', e.target.value)} type='text' className='register-input' value={profile_picture} />
+                                <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='register-input' value={profile_picture} />
                             </div>        
                             <div className='submit-button'>
-                                <Link to='/ProfilePage'><button onClick={() => this.register()} className='register-button'> Submit </button> </Link>
+                                {/* <Link to='/ProfilePage'> */}
+                                    <button onClick={() => this.register()} className='register-button'> Submit </button> 
+                                    {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -125,25 +122,12 @@ class Register extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        email: state.email,
-        fist_name: state.first_name,
-        last_name: state.last_name,
-        user_name: state.user_name,
-        password: state.password,
-        sex: state.sex,
-        profile_picture: state.profile_picture
+        user: state.user
     }
 }
 
 const mapDispatchToProps = {
-    setRegisterUser: setRegisterUser,
-    insertEmail: insertEmail,
-    insertFirstName: insertFirstName,
-    insertLastName: insertLastName,
-    insertPassword: insertPassword,
-    insertSex: insertSex,
-    insertProfilePicture: insertProfilePicture,
-    insertUserName: insertUserName,
+    setRegisterUser: setRegisterUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

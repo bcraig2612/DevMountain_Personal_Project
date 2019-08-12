@@ -20,6 +20,7 @@ module.exports = {
         });
     },
     updateDetails: (req, res, next) => {
+        console.log('IN', req.params);
         const { user_id } = req.params;
         const db = req.app.get("db");
         const {
@@ -56,7 +57,9 @@ module.exports = {
             squat_max, 
             deadlift_max,
             user_id ).then(users => {
-            res.status(200).send(users);
+            db.get_user(user_id).then(user => {
+                res.status(200).send(user);
+            });
           }).catch(err => {
             console.log(err)
             res.status(500).send()

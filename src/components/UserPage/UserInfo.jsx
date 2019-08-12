@@ -2,27 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setRegisterUser,
-         insertEmail,
-         insertPassword,
-         insertSex,
-         insertProfilePicture,
-         insertUserName,
-         insertFirstName,
-         insertLastName } from '../../redux/user_register';
+import { setRegisterUser } from '../../redux/user_register';
 import './Styles/UserInfo.scss';
 
 class UserInfo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user_name: '',
-            password: '',
-            email: '',
-            first_name: '',
-            last_name: '',
-            profile_picture: '',
-            sex: ''
+            ...props.user
         }
 
         this.updateInfo = this.updateInfo.bind(this);
@@ -89,7 +76,8 @@ class UserInfo extends Component {
           user_name,
           password,
           sex,
-          profile_picture } = this.props;
+          universalChangeHandler,
+          profile_picture } = this.state;
         console.log(this.props);
         return (
             <div className='info'>
@@ -102,31 +90,31 @@ class UserInfo extends Component {
                 </div>           
                 <div>
                     Email:
-                    <input onChange={(e) => insertEmail('email', e.target.value)} type='text' className='info-input' value={email} />
+                    <input onChange={(e) => universalChangeHandler('email', e.target.value)} type='text' className='info-input' value={email} />
                 </div>                               
                 <div>
                     First Name:
-                    <input onChange={(e) => insertFirstName('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
+                    <input onChange={(e) => universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
                 </div>                               
                 <div>
                     Last Name:
-                    <input onChange={(e) => insertLastName('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
+                    <input onChange={(e) => universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
                 </div>
                 <div>
                     User Name:
-                    <input onChange={(e) => insertUserName('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
+                    <input onChange={(e) => universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
                 </div>                              
                 <div>
                     Password:
-                    <input onChange={(e) => insertPassword('password', e.target.value)} type='password' className='info-input' value={password} />
+                    <input onChange={(e) => universalChangeHandler('password', e.target.value)} type='password' className='info-input' value={password} />
                 </div>                 
                 <div>
                     User Sex:
-                    <input onChange={(e) => insertSex('sex', e.target.value)} type='text' className='info-input' value={sex} />
+                    <input onChange={(e) => universalChangeHandler('sex', e.target.value)} type='text' className='info-input' value={sex} />
                 </div>
                 <div>
                     Profile Picture:
-                    <input onChange={(e) => insertProfilePicture('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
+                    <input onChange={(e) => universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                 </div>     
                 <div className='info-button'>
                     <Link to='/ProfilePage'><button onClick={() => this.updateInfo()} className='update-info'> Submit </button> </Link>
@@ -139,25 +127,12 @@ class UserInfo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        email: state.email,
-        fist_name: state.first_name,
-        last_name: state.last_name,
-        user_name: state.user_name,
-        password: state.password,
-        sex: state.sex,
-        profile_picture: state.profile_picture
+        user: state.user
     }
 }
 
 const mapDispatchToProps = {
-    setRegisterUser: setRegisterUser,
-    insertEmail: insertEmail,
-    insertFirstName: insertFirstName,
-    insertLastName: insertLastName,
-    insertPassword: insertPassword,
-    insertSex: insertSex,
-    insertProfilePicture: insertProfilePicture,
-    insertUserName: insertUserName,
+    setRegisterUser: setRegisterUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);

@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import CreationZone from './components/CreationZone/CreationZone';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import ProfilePage from './components/UserPage/ProfilePage';
 
 export default (
     <Switch>

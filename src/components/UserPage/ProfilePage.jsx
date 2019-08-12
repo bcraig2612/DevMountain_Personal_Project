@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { UserDetails } from './UserDetails';
-import { UserInfo } from './UserInfo';
-import { UserRoutine } from './UserRoutine';
-import { BMI } from './BMI';
+import UserDetails from './UserDetails';
+import UserInfo from './UserInfo';
+// import UserRoutine from './UserRoutine';
+// import  BMI  from './BMI';
 
 export default class ProfilePage extends Component {
     render() {
         return (
-            <div>
+            <div className="container">
                 <UserDetails/>
                 <UserInfo/>
-                <UserRoutine />
-                <BMI />
+                {/* <UserRoutine />
+                <BMI /> */}
             </div>
         )
     }

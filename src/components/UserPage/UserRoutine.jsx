@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './UserRoutine.scss';
+import './Styles/UserRoutine.scss';
 
 export class UserRoutine extends Component {
     render() {
@@ -11,4 +11,4 @@ export class UserRoutine extends Component {
     }
 }
 
-export default UserRoutine
+export default UserRoutine;

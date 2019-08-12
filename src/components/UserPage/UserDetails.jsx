@@ -2,43 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUserProfile,
-         insertHeightFeet,
-         insertHeightInches,
-         insertWeight,
-         insertBMI,
-         insertBodyFatPercentage,
-         insertNeckMeasurement,
-         insertShoulderMeasurement,
-         insertUpperArmsMeasurement,
-         insertChestMeasurement,
-         insertWaistMeasurement,
-         insertThighsMeasurement,
-         insertCalvesMeasurement,
-         insertDeadliftMax,
-         insertSquatMax,
-         insertBenchPressMax } from '../../redux/user_profile';
+import { setUserProfile } from '../../redux/user_register';
 import './Styles/UserDetails.scss';
 
 export class UserDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            height_feet: null,
-            height_inches: null,
-            weight: null,
-            bmi: null,
-            body_fat_percentage: null,
-            neck_measurement: null,
-            shoulder_measurement: null,
-            upper_arms_measurement: null,
-            chest_measurement: null,
-            waist_measurement: null,
-            thighs_measurement: null,
-            calves_measurement: null,
-            bench_press_max: null,
-            squat_max: null,
-            deadlift_max: null
+            ...props.user
         };
         
         this.userSession = this.userSession.bind(this);
@@ -68,6 +39,7 @@ export class UserDetails extends Component {
     }
 
     updateDetails() {
+        let user_id = this.props.user.user_id;
         const {
             height_feet,
             height_inches,
@@ -84,7 +56,7 @@ export class UserDetails extends Component {
             bench_press_max,
             squat_max,
             deadlift_max } = this.state;
-            axios.post('/api/update_user_details/:user_id', {
+            axios.patch(`/api/update_user_details/${user_id}`, {
                 height_feet: height_feet,
                 height_inches: height_inches,
                 weight: weight,
@@ -101,8 +73,8 @@ export class UserDetails extends Component {
                 squat_max: squat_max,
                 deadlift_max: deadlift_max })
                 .then( res => {
-                    this.props.setUserProfile(res.data);
-                    this.props.history.push('/ProfilePage');
+                    this.props.setUserProfile(res.data[0]);
+                    // window.reload();
                 })
     }
 
@@ -128,76 +100,77 @@ export class UserDetails extends Component {
             calves_measurement,
             bench_press_max,
             squat_max,
-            deadlift_max } = this.props;
+            deadlift_max } = this.state;
         console.log(this.props);
+        console.log(this.state);
         return (
             <div className='details'>
             <div> 
                 <h1> Fitness Maestro </h1> 
             </div>                   
-            <div id='details-card'>       
+            <div id='details-card row'>       
                 <div>
                     <h2> User Details </h2>
                 </div>                  
                 <div>
                     Height Feet:
-                    <input onChange={(e) => insertHeightFeet('height_feet', e.target.value)} type='text' className='details-input' value={height_feet} />
+                    <input onChange={(e) => this.universalChangeHandler('height_feet', e.target.value)} type='number' className='details-input' value={height_feet} />
                 </div>                               
                 <div>
                     Height Inches:
-                    <input onChange={(e) => insertHeightInches('height_inches', e.target.value)} type='text' className='details-input' value={height_inches} />
+                    <input onChange={(e) => this.universalChangeHandler('height_inches', e.target.value)} type='number' className='details-input' value={height_inches} />
                 </div>                               
                 <div>
                     Weight:
-                    <input onChange={(e) => insertWeight('weight', e.target.value)} type='text' className='details-input' value={weight} />
+                    <input onChange={(e) => this.universalChangeHandler('weight', e.target.value)} type='number' className='details-input' value={weight} />
                 </div>                               
                 <div>
                     BMI:
-                    <input onChange={(e) => insertBMI('bmi', e.target.value)} type='text' className='details-input' value={bmi} />
+                    <input onChange={(e) => this.universalChangeHandler('bmi', e.target.value)} type='number' className='details-input' value={bmi} />
                 </div>
                 <div>
                     Body Fat Percentage:
-                    <input onChange={(e) => insertBodyFatPercentage('body_fat_percentage', e.target.value)} type='text' className='details-input' value={body_fat_percentage} />
+                    <input onChange={(e) => this.universalChangeHandler('body_fat_percentage', e.target.value)} type='number' className='details-input' value={body_fat_percentage} />
                 </div>                              
                 <div>
                     Neck Measurement:
-                    <input onChange={(e) => insertNeckMeasurement('neck_measurement', e.target.value)} type='text' className='details-input' value={neck_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('neck_measurement', e.target.value)} type='number' className='details-input' value={neck_measurement} />
                 </div>                 
                 <div>
                     Shoulder Measurement:
-                    <input onChange={(e) => insertShoulderMeasurement('shoulder_measurement', e.target.value)} type='text' className='details-input' value={shoulder_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('shoulder_measurement', e.target.value)} type='number' className='details-input' value={shoulder_measurement} />
                 </div>
                 <div>
                     Upper Arms Measurement:
-                    <input onChange={(e) => insertUpperArmsMeasurement('upper_arms_measurement', e.target.value)} type='text' className='details-input' value={upper_arms_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('upper_arms_measurement', e.target.value)} type='number' className='details-input' value={upper_arms_measurement} />
                 </div>                               
                 <div>
                     Chest Measurement:
-                    <input onChange={(e) => insertChestMeasurement('chest_measurement', e.target.value)} type='text' className='details-input' value={chest_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('chest_measurement', e.target.value)} type='number' className='details-input' value={chest_measurement} />
                 </div>                               
                 <div>
                     Waist Measurement:
-                    <input onChange={(e) => insertWaistMeasurement('waist_measurement', e.target.value)} type='text' className='details-input' value={waist_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('waist_measurement', e.target.value)} type='number' className='details-input' value={waist_measurement} />
                 </div>
                 <div>
                     Thighs Measurement:
-                    <input onChange={(e) => insertThighsMeasurement('thighs_measurement', e.target.value)} type='text' className='details-input' value={thighs_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('thighs_measurement', e.target.value)} type='number' className='details-input' value={thighs_measurement} />
                 </div>                              
                 <div>
                     Calves Measurement:
-                    <input onChange={(e) => insertCalvesMeasurement('calves_measurement', e.target.value)} type='text' className='details-input' value={calves_measurement} />
+                    <input onChange={(e) => this.universalChangeHandler('calves_measurement', e.target.value)} type='number' className='details-input' value={calves_measurement} />
                 </div>                 
                 <div>
                     Bench Press Max:
-                    <input onChange={(e) => insertBenchPressMax('bench_press_max', e.target.value)} type='text' className='details-input' value={bench_press_max} />
+                    <input onChange={(e) => this.universalChangeHandler('bench_press_max', e.target.value)} type='number' className='details-input' value={bench_press_max} />
                 </div>           
                 <div>
                     Squat Max:
-                    <input onChange={(e) => insertSquatMax('squat_max', e.target.value)} type='text' className='details-input' value={squat_max} />
+                    <input onChange={(e) => this.universalChangeHandler('squat_max', e.target.value)} type='number' className='details-input' value={squat_max} />
                 </div>           
                 <div>
                     Deadlift Max:
-                    <input onChange={(e) => insertDeadliftMax('deadlift_max', e.target.value)} type='text' className='details-input' value={deadlift_max} />
+                    <input onChange={(e) => this.universalChangeHandler('deadlift_max', e.target.value)} type='number' className='details-input' value={deadlift_max} />
                 </div>           
                 <div className='details-button'>
                     <Link to='/ProfilePage'><button onClick={() => this.updateDetails()} className='update-details'> Submit </button> </Link>
@@ -210,41 +183,12 @@ export class UserDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        height_feet: state.height_feet,
-        height_inches: state.height_inches,
-        weight: state.weight, 
-        bmi: state.bmi,
-        body_fat_percentage: state.body_fat_percentage,
-        neck_measurement: state.neck_measurement,
-        shoulder_measurement: state.shoulder_measurement,
-        upper_arms_measurement: state.upper_arms_measurement,
-        chest_measurement: state.chest_measurement,
-        waist_measurement: state.waist_measurement,
-        thighs_measurement: state.thighs_measurement,
-        calves_measurement: state.calves_measurement,
-        bench_press_max: state.bench_press_max,
-        squat_max: state.squat_max,
-        deadlift_max: state.deadlift_max
+        user: state.user
     }
 }
 
 const mapDispatchToProps = {
-    setUserProfile: setUserProfile,
-    insertHeightFeet: insertHeightFeet,
-    insertHeightInches: insertHeightInches,
-    insertWeight: insertWeight,
-    insertBMI: insertBMI,
-    insertBodyFatPercentage: insertBodyFatPercentage,
-    insertNeckMeasurement: insertNeckMeasurement,
-    insertShoulderMeasurement: insertShoulderMeasurement,
-    insertUpperArmsMeasurement: insertUpperArmsMeasurement,
-    insertChestMeasurement: insertChestMeasurement,
-    insertWaistMeasurement: insertWaistMeasurement,
-    insertThighsMeasurement: insertThighsMeasurement,
-    insertCalvesMeasurement: insertCalvesMeasurement,
-    insertDeadliftMax: insertDeadliftMax,
-    insertSquatMax: insertSquatMax,
-    insertBenchPressMax: insertBenchPressMax
+    setUserProfile: setUserProfile
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

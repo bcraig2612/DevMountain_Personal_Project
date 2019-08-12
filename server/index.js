@@ -48,7 +48,7 @@ app.use(session({
 );
 
 // checkLoggedIn endpoint (1)
-const checkLoggedIn = require('./middleware')
+const checkLoggedIn = require('./middleware/middleware')
 app.get('/api/check_logged_in', checkLoggedIn);
 
 // auth endpoints (4)
