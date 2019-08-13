@@ -33,19 +33,19 @@ class BMICalculator extends Component {
     };
     if (bmi <= 18.5) {
       bmiResults.label = 'Underweight';
-      bmiResults.alertClass = 'alert-danger';
+      bmiResults.alertClass = 'danger';
   } else if (bmi <= 24.9) {
       bmiResults.label = 'Normal Weight';
-      bmiResults.alertClass = 'alert-success';
+      bmiResults.alertClass = 'success';
   } else if (bmi <= 29.9) {
       bmiResults.label = 'Overweight';
-      bmiResults.alertClass = 'alert-warning';
+      bmiResults.alertClass = 'warning';
   } else if (bmi >= 30) {
       bmiResults.label = 'Obesity';
-      bmiResults.alertClass = 'alert-danger';
+      bmiResults.alertClass = 'danger';
   } else {
       bmiResults.label = 'BMI';
-      bmiResults.alertClass = 'alert-primary'
+      bmiResults.alertClass = 'primary'
     }
     return bmiResults;
   }
@@ -127,7 +127,7 @@ function BmiDisplay(props) {
     return (
         <div className={'bmi-result alert' + props.alertClass}>
             <div>{props.bmi || '--.-'}</div>
-            <div>{props.label}</div>
+            <div className={props.alertClass == 'overweight' ? 'danger' : 'success'}>{props.label}</div>
         </div>
     );
 }

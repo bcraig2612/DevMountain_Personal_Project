@@ -10,7 +10,7 @@ class CreationZone extends Component {
             <div className='routine_creator_page'>
                 <h1> Creation Zone </h1>
                 <DefaultRoutine />
-                <DefaultWorkout />
+                {/* <DefaultWorkout /> */}
             </div>
         );
     }

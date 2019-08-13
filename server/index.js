@@ -6,6 +6,8 @@ const app = express();
 
 app.use(express.json());
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 const { login, 
         logout, 
         register, 
@@ -78,5 +80,10 @@ app.post('/api/default_workout', postDefaultWorkout);
 app.post('/api/user_workout', postUserWorkout);
 app.delete('/api/delete_default_workout/:default_workout_id', removeDefaultWorkout);
 app.delete('/api/delete_user_workout/:user_workout_id/:user_routine_id', removeUserWorkout);
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`));
