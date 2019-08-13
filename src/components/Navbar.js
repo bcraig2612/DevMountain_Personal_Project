@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className="navbar" style={{ background: "#da7618" }}>
             <h1>
-                <i class="fas fa-dumbbell"></i> Fitness Maestro
+                <i className="fas fa-dumbbell"></i> Fitness Maestro
             </h1>
 
             <ul>
@@ -17,7 +17,7 @@ const Navbar = () => {
                     <Link to='/'>Register</Link>
                 </li>
                 <li>
-                    <Link to='/ProfilePage'><i class="fas fa-user"></i>Profile</Link>
+                    <Link to='/ProfilePage'><i className="fas fa-user"></i>Profile</Link>
                 </li>
             </ul>
         </div>

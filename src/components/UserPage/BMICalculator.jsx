@@ -70,56 +70,53 @@ class BMICalculator extends Component {
                                         <Input
                                             name='weight'
                                             className="form-control"
-                                            id="bmiWeight"
+                                            id="bmi-weight"
                                             type="number"
                                             min="1"
                                             max="1000"
                                             value={this.state.weight}
                                             onChange={this.handleChange}
                                         />
-                                        <label className="control-label" htmlFor="bmiWeight">lb</label>
+                                        <label className="control-label" htmlFor="bmi-weight">lb</label>
                                     </div>
                                 </div>
                             </div>
-
                             <div className="form-group">
                                 <legend>Height</legend>
                                 <div className="row">
                                     <div className="col-xs-6">
                                         <Input
-                                            name='heightFeet'
+                                            name='height_feet'
                                             className="form-control"
-                                            id="bmiHeightFeet"
+                                            id="bmi-height_feet"
                                             type="number"
                                             min="1"
                                             max="12"
-                                            value={this.state.heightFeet}
+                                            value={this.state.height_feet}
                                             onChange={this.handleChange}
                                         />
-                                        <label className="control-label" htmlFor="bmiHeightFeet">ft</label>
+                                        <label className="control-label" htmlFor="bmi-height_feet">ft</label>
                                     </div>
                                     <div className="col-xs-6">
                                         <Input
-                                            name='heightInch'
+                                            name='height_inches'
                                             className="form-control"
-                                            id="bmiHeightInch"
+                                            id="bmi-height_inches"
                                             type="number"
                                             min="0"
                                             max="12"
-                                            value={this.state.heightInch}
+                                            value={this.state.height_inches}
                                             onChange={this.handleChange}
                                         />
-                                        <label className="control-label" htmlFor="bmiHeightInch">in</label>
+                                        <label className="control-label" htmlFor="bmi-height_inches">in</label>
                                     </div>
                                 </div>
                             </div>
                         </Form>
                     </div>
-
                     <div className="col-sm-6">
                         <BmiDisplay bmi={bmi} label={results.label} alertClass={results.alertClass} />
                     </div>
-
                 </div>
             </div>
         );

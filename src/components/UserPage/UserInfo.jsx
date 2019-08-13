@@ -43,7 +43,6 @@ class UserInfo extends Component {
             first_name,
             last_name,
             user_name,
-            password,
             sex,
             profile_picture } = this.state;
         axios.patch('/api/update_user_info/:user_id', {
@@ -51,7 +50,6 @@ class UserInfo extends Component {
             first_name: first_name,
             last_name: last_name,
             user_name: user_name,
-            password: password,
             sex: sex,
             profile_picture: profile_picture })
             .then( res => {
@@ -72,7 +70,6 @@ class UserInfo extends Component {
           first_name,
           last_name,
           user_name,
-          password,
           sex,
           universalChangeHandler,
           profile_picture } = this.state;
@@ -101,14 +98,14 @@ class UserInfo extends Component {
                 <div>
                     User Name:
                     <input onChange={(e) => universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
-                </div>                              
+                </div>                                           
                 <div>
-                    Password:
-                    <input onChange={(e) => universalChangeHandler('password', e.target.value)} type='password' className='info-input' value={password} />
-                </div>                 
-                <div>
-                    User Sex:
-                    <input onChange={(e) => universalChangeHandler('sex', e.target.value)} type='text' className='info-input' value={sex} />
+                    Sex:
+                    <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
+                        <option defaultValue="Male / Female" selected={true}> Male / Female </option>
+                        <option value="Male"> Male </option>
+                        <option value="Female"> Female </option>
+                    </select>
                 </div>
                 <div>
                     Profile Picture:
