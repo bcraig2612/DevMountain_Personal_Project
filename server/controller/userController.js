@@ -73,7 +73,6 @@ module.exports = {
             first_name,
             last_name,
             sex,
-            password,
             user_name,
             email
          } = req.body;
@@ -82,7 +81,6 @@ module.exports = {
             first_name,
             last_name,
             sex,
-            password,
             user_name,
             email,
             user_id).then(users => {

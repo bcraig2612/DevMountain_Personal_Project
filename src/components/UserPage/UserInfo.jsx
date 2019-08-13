@@ -38,6 +38,7 @@ class UserInfo extends Component {
     }
 
     updateInfo() {
+        let user_id = this.props.user.user_id;
         const {
             email,
             first_name,
@@ -45,7 +46,7 @@ class UserInfo extends Component {
             user_name,
             sex,
             profile_picture } = this.state;
-        axios.patch('/api/update_user_info/:user_id', {
+        axios.patch(`/api/update_user_info/${user_id}`, {
             email: email,
             first_name: first_name,
             last_name: last_name,
@@ -53,8 +54,8 @@ class UserInfo extends Component {
             sex: sex,
             profile_picture: profile_picture })
             .then( res => {
-                this.props.setRegisterUser(res.data);
-                this.props.history.push('/ProfilePage');
+                this.props.setRegisterUser(res.data[0]);
+                // this.props.history.push('/ProfilePage');
             })
     }
 
@@ -71,9 +72,9 @@ class UserInfo extends Component {
           last_name,
           user_name,
           sex,
-          universalChangeHandler,
           profile_picture } = this.state;
         console.log(this.props);
+        console.log(this.state);
         return (
             <div className='info'>
             <div> 
@@ -85,31 +86,31 @@ class UserInfo extends Component {
                 </div>           
                 <div>
                     Email:
-                    <input onChange={(e) => universalChangeHandler('email', e.target.value)} type='text' className='info-input' value={email} />
+                    <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='text' className='info-input' value={email} />
                 </div>                               
                 <div>
                     First Name:
-                    <input onChange={(e) => universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
+                    <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
                 </div>                               
                 <div>
                     Last Name:
-                    <input onChange={(e) => universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
+                    <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
                 </div>
                 <div>
                     User Name:
-                    <input onChange={(e) => universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
+                    <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
                 </div>                                           
                 <div>
                     Sex:
                     <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
                         <option defaultValue="Male / Female" selected={true}> Male / Female </option>
-                        <option value="Male"> Male </option>
-                        <option value="Female"> Female </option>
+                        <option value={sex}> Male </option>
+                        <option value={sex}> Female </option>
                     </select>
                 </div>
                 <div>
                     Profile Picture:
-                    <input onChange={(e) => universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
+                    <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                 </div>     
                 <div className='info-button'>
                    <button onClick={() => this.updateInfo()} className='update-info'> Submit </button>

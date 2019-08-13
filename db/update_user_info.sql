@@ -4,7 +4,6 @@ SET
     first_name = $2, 
     last_name = $3,  
     sex = $4, 
-    password = $5,
-    user_name = $6,
-    email = $7
-WHERE user_id = $8
+    user_name = $5,
+    email = $6
+WHERE user_id = $7

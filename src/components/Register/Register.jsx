@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setRegisterUser } from '../../redux/user_register';
 import './Styles/Register.scss';
 
@@ -101,8 +100,8 @@ class Register extends Component {
                                 Sex:
                                 <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
                                     <option defaultValue="Male / Female" selected={true}> Male / Female </option>
-                                    <option value="Male"> Male </option>
-                                    <option value="Female"> Female </option>
+                                    <option value={sex}> Male </option>
+                                    <option value={sex}> Female </option>
                                 </select>
                             </div>
                             <div>
