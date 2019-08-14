@@ -29,8 +29,11 @@ export default class DefaultWorkout extends Component {
                         <div className="card">
                             <h3 className="card-header">{workout.workout_name}</h3>
                             <div className="card-body">
-                                <p>{workout.required_equipment}</p>
-                                <img src={workout.image_url} style={{width: "200px", height: "200px"}} /> 
+                                <section> <p>{workout.required_equipment}</p> </section>
+                                <section> <p>{workout.how_to}</p> </section>
+                                <section> <p>{workout.default_sets}</p> </section>
+                                <section>   <p>{workout.default_reps}</p> </section>
+                                <section>   <img src={workout.image_url} style={{width: "275px", height: "275px"}} />  </section>
                             </div>
                         </div>
                     </div>
