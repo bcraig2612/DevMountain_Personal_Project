@@ -7,10 +7,14 @@ let logoStyles = {
 };
 
 let navStyles = {
-    background: 'rgb(190, 190, 190)',
     borderWidth: '5px',
     borderStyle: 'inset',
-    borderColor: 'rgb(155,155,155)'
+    borderColor: 'rgb(190, 190, 190)',
+};
+
+let fontStyle = {
+    fontFamily: "'Titillium Web', sans-serif",
+    fontWeight: '800'
 };
 
 let navTextStyles = {
@@ -21,21 +25,21 @@ let navTextStyles = {
     color: 'rgba(226,62,62,1)'
 }
 
-let buttonStyle = {
-    color: 'black'
-};
+// let buttonStyle = {
+//     color: 'black'
+// };
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-sm" style={navStyles}>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0" style={navStyles}>
             <div className="container">
-                <div className='logo' style={logoStyles}>
-                    <h3>
-                        <i className="fas fa-dumbbell"></i> Fitness Maestro
-                </h3>
+                <div className='navbar-logo'>
+                    <h3 class='title' style={fontStyle}>
+                        <i className="fas fa-dumbbell" style={logoStyles}></i> Fitness Maestro
+                    </h3>
                 </div>
-                <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" style={buttonStyle}>
-                    <span className="navbar-toggler-icon" style={buttonStyle}></span>
+                <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav ml-auto">

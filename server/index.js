@@ -50,7 +50,7 @@ app.use(session({
   }
 })
 );
-
+// 23 endpoints
 // checkLoggedIn endpoint (1)
 const checkLoggedIn = require('./middleware/middleware')
 app.get('/api/check_logged_in', checkLoggedIn);
@@ -67,7 +67,7 @@ app.get('/api/get_all_users', getAllUsers);
 app.patch('/api/update_user_details/:user_id', updateDetails);
 app.patch('/api/update_user_info/:user_id', updateInfo);
 
-// routine endpoints (6)
+// routine endpoints (7)
 app.get('/api/get_routines', getDefaultRoutines);
 app.get('/api/user_routine/:user_id', getUserRoutines);
 app.get('/api/user_routines/:user_routine_id/:user_workout_id', getUserRoutineWorkouts);
@@ -76,7 +76,7 @@ app.post('/api/default_routine', postDefaultRoutine);
 app.delete('/api/delete_user_routine/:user_routine_id', removeUserRoutine);
 app.delete('/api/delete_default_routine/:default_routine_id', removeDefaultRoutine);
 
-// workout endpoints (6)
+// workout endpoints (7)
 app.get('/api/workout/:default_routine_id', getRoutineWorkouts)
 app.get('/api/default_workout/:default_workout_id', getDefaultWorkout);
 app.get('/api/default_workout', allDefaultWorkouts);
