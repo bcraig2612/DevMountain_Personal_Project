@@ -7,10 +7,10 @@ let logoStyles = {
 };
 
 let navStyles = {
-   background: 'rgb(190, 190, 190)',
-   borderWidth: '5px',
-   borderStyle: 'inset',
-   borderColor: 'rgb(155,155,155)'
+    background: 'rgb(190, 190, 190)',
+    borderWidth: '5px',
+    borderStyle: 'inset',
+    borderColor: 'rgb(155,155,155)'
 };
 
 let navTextStyles = {
@@ -21,22 +21,26 @@ let navTextStyles = {
     color: 'rgba(226,62,62,1)'
 }
 
+let buttonStyle = {
+    color: 'black'
+};
+
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-sm" style={navStyles}>
             <div className="container">
                 <div className='logo' style={logoStyles}>
-                <h3>
-                    <i className="fas fa-dumbbell"></i> Fitness Maestro
-                </h3>  
+                    <h3>
+                        <i className="fas fa-dumbbell"></i> Fitness Maestro
+                </h3>
                 </div>
-    <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <Link to='/' className="nav-link" style={navTextStyles}>Login</Link>
+                <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" style={buttonStyle}>
+                    <span className="navbar-toggler-icon" style={buttonStyle}></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarCollapse">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <Link to='/' className="nav-link" style={navTextStyles}>Login</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to='/Register' className="nav-link" style={navTextStyles}>Register</Link>
@@ -53,7 +57,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </nav> 
+        </nav>
     );
 }
 
