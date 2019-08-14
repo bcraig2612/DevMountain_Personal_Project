@@ -229,7 +229,10 @@ export class UserDetails extends Component {
                                 Calves:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('calves_measurement', e.target.value)} type='number' className='details-input' value={calves_measurement} />
-                        </div>              
+                        </div>   
+                         <div className='details-button'>
+                            <button onClick={() => this.updateDetails()} className='update-details'> Submit </button> 
+                        </div>           
                     </div> 
                     </div>
                     </div>

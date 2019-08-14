@@ -138,6 +138,9 @@ class UserInfo extends Component {
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                         </div>
+                        <div className='info-button'>
+                            <button onClick={() => this.updateInfo()} className='update-info'> Submit </button>
+                        </div>
                     </div> 
                     </div>
                     </div>
