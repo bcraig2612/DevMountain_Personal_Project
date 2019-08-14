@@ -1,4 +1,16 @@
 module.exports = {
+    getRoutineWorkouts: (req, res, next) => {
+        const db = req.app.get('db');
+        console.log(req.params)
+        let routine = req.params.default_routine_id ;
+        console.log('ROUTINE', routine)
+        db.get_routine_workouts(routine).then(data => {
+            res.status(200).send(data);
+        }).catch(err => {
+            console.log(err)
+            res.status(500).send()
+        });
+    },
     // (GET REQUEST)
     getDefaultWorkout:  (req, res, next) => {
         const { default_workout_id } = req.params;

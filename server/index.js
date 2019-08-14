@@ -6,47 +6,49 @@ const app = express();
 
 app.use(express.json());
 
-app.use( express.static( `${__dirname}/../build` ) );
+app.use(express.static(`${__dirname}/../build`));
 
-const { login, 
-        logout, 
-        register, 
-        userSession } = require('./controller/authController');
-        
-const { getUserRoutines, 
-        postUserRoutine, 
-        getUserRoutineWorkouts, 
-        removeUserRoutine, 
-        postDefaultRoutine, 
-        removeDefaultRoutine } = require('./controller/routineController');
+const { login,
+  logout,
+  register,
+  userSession } = require('./controller/authController');
 
-const { getUser, 
-        getAllUsers, 
-        updateDetails, 
-        updateInfo } = require('./controller/userController');     
+const { getUserRoutines,
+  getDefaultRoutines,
+  postUserRoutine,
+  getUserRoutineWorkouts,
+  removeUserRoutine,
+  postDefaultRoutine,
+  removeDefaultRoutine } = require('./controller/routineController');
 
-const { getDefaultWorkout, 
-        allDefaultWorkouts, 
-        postDefaultWorkout,
-        postUserWorkout, 
-        removeDefaultWorkout,
-        removeUserWorkout } = require('./controller/workoutController');
-                
+const { getUser,
+  getAllUsers,
+  updateDetails,
+  updateInfo } = require('./controller/userController');
+
+const { getDefaultWorkout,
+  getRoutineWorkouts,
+  allDefaultWorkouts,
+  postDefaultWorkout,
+  postUserWorkout,
+  removeDefaultWorkout,
+  removeUserWorkout } = require('./controller/workoutController');
+
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
-                
+
 massive(CONNECTION_STRING).then((db) => {
-    app.set('db', db);
-    console.log('The database is connected.');
+  app.set('db', db);
+  console.log('The database is connected.');
 });
-                
+
 app.use(session({
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 14 // 2-weeks
-    }
-  })
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 14 // 2-weeks
+  }
+})
 );
 
 // checkLoggedIn endpoint (1)
@@ -66,6 +68,7 @@ app.patch('/api/update_user_details/:user_id', updateDetails);
 app.patch('/api/update_user_info/:user_id', updateInfo);
 
 // routine endpoints (6)
+app.get('/api/get_routines', getDefaultRoutines);
 app.get('/api/user_routine/:user_id', getUserRoutines);
 app.get('/api/user_routines/:user_routine_id/:user_workout_id', getUserRoutineWorkouts);
 app.post('/api/user_routine', postUserRoutine);
@@ -74,6 +77,7 @@ app.delete('/api/delete_user_routine/:user_routine_id', removeUserRoutine);
 app.delete('/api/delete_default_routine/:default_routine_id', removeDefaultRoutine);
 
 // workout endpoints (6)
+app.get('/api/workout/:default_routine_id', getRoutineWorkouts)
 app.get('/api/default_workout/:default_workout_id', getDefaultWorkout);
 app.get('/api/default_workout', allDefaultWorkouts);
 app.post('/api/default_workout', postDefaultWorkout);
@@ -82,7 +86,7 @@ app.delete('/api/delete_default_workout/:default_workout_id', removeDefaultWorko
 app.delete('/api/delete_user_workout/:user_workout_id/:user_routine_id', removeUserWorkout);
 
 const path = require('path')
-app.get('*', (req, res)=>{
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
