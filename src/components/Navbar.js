@@ -14,10 +14,10 @@ const Navbar = () => {
                     <Link to='/'>Login</Link>
                 </li>
                 <li>
-                    <Link to='/'>Register</Link>
+                    <Link to='/Register'>Register</Link>
                 </li>
                 <li>
-                    <Link to='/ProfilePage'><i className="fas fa-user"></i>Profile</Link>
+                    <Link to='/ProfilePage'><i className="fas fa-user"></i>My Profile</Link>
                 </li>
             </ul>
         </div>
