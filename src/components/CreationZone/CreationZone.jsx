@@ -19,12 +19,16 @@ class CreationZone extends Component {
             this.setState({defaultRoutines: res.data});
             console.log(this.state.defaultRoutines);
         });
+
+        
     }
     render() {
+        let styles = {
+            background: 'linear-gradient(0deg, rgba(130, 130, 130, 1) 0%, rgba(226, 62, 62, 1) 100%)'
+        }
         let routines = this.state.defaultRoutines;
         return (
-            <div className='routine_creator_page'>
-                <h1> Creation Zone </h1>
+            <div className='routine_creator_page' style={styles}>
                 <DefaultRoutine routines={routines} />
             </div>
         );
@@ -32,3 +36,4 @@ class CreationZone extends Component {
 }
 
 export default CreationZone;
+

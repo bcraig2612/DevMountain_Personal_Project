@@ -66,6 +66,7 @@ class UserInfo extends Component {
     }
 
     render() {
+        // let user = this.state.user;
         const {
           email,
           first_name,
@@ -75,48 +76,75 @@ class UserInfo extends Component {
           profile_picture } = this.state;
         console.log(this.props);
         console.log(this.state);
+
+        let style = {
+            background: 'lightgray'
+        };
+
         return (
-            <div className='info'>
-            <div> 
-                <h1> Fitness Maestro </h1> 
-            </div>                   
-            <div id='info-card'>       
-                <div>
-                    <h2> User Info </h2>
-                </div>           
-                <div>
-                    Email:
-                    <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='text' className='info-input' value={email} />
-                </div>                               
-                <div>
-                    First Name:
-                    <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
-                </div>                               
-                <div>
-                    Last Name:
-                    <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
+            <div className='user-page'>
+                {/* <section id="actions" className="py-4 mb-4 bg-light"> */}
+                <div className="container">
                 </div>
-                <div>
-                    User Name:
-                    <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
-                </div>                                           
-                <div>
-                    Sex:
-                    <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
-                        <option defaultValue="Male / Female" selected={true}> Male / Female </option>
-                        <option value={sex}> Male </option>
-                        <option value={sex}> Female </option>
-                    </select>
-                </div>
-                <div>
-                    Profile Picture:
-                    <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
-                </div>     
-                <div className='info-button'>
-                   <button onClick={() => this.updateInfo()} className='update-info'> Submit </button>
-                </div>
-            </div>
-        </div>                                 
+                {/* </section> */}
+                    <section id="info-body">
+                    <div className="container">
+                    <div className="row">
+                    <div className="col-md-6 mx-auto">
+                    <div className="card" style={style}>
+                    <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
+                        <h3>User Info</h3>
+                    </div>
+
+                    <div className="card-body">
+
+                        <div className="form-group">
+                            <label>
+                                Email:
+                            </label>
+                            <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='email' className='info-input' value={email} />
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                First Name:
+                            </label>
+                            <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                Last Name:
+                            </label>
+                            <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                User Name:
+                            </label>
+                            <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                Sex:
+                            </label>
+                            <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
+                                <option defaultValue="Male / Female" selected={true}> Male / Female </option>
+                                <option value={sex}> Male </option>
+                                <option value={sex}> Female </option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label>
+                                Profile Picture:
+                            </label>
+                            <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
+                        </div>
+                    </div> 
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
+                    </div>                                        
         )
     }
 }

@@ -52,32 +52,67 @@ class Login extends Component {
         const { user_name,
             email,
             password } = this.state;
+
+        let styles = {
+            background: 'linear-gradient(0deg, rgba(130, 130, 130, 1) 0%, rgba(226, 62, 62, 1) 100%)'
+                }
+
+          let style = {
+            background: 'lightgray'
+        };
         return (
-                    <div className='card'>
-                        <div className='card-body'>
-                            <div className='card-header'>
-                                <h2> User Login </h2>
-                            </div>
-                            <div className='form-group'>
-                                <label>Username:</label>
-                                <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='form-control' value={user_name} />
-                            </div>
-                            <div className='form-group'>
-                                Password:
-                                    <input onChange={(e) => this.universalChangeHandler('password', e.target.value)} type='password' className='form-control' value={password} />
-                            </div>
-                            <div className='form-group'>
-                                Email:
-                                    <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='text' className='form-control' value={email} />
-                            </div>
-                            <div className='button-group'>
-                                {/* <Link to='/ProfilePage'> */}
-                                <button onClick={() => this.login()} className='btn btn-success btn-block' style={{marginBottom: "5px"}}> Login </button>
-                                {/* </Link> */}
-                                <Link to='/Register'><button className='btn btn-primary btn-block' style={{marginTop: "5px"}}> Register </button></Link>
+            <div style={styles}>
+                <section id="actions" class="py-4 mb-4 bg-light">
+                    <div class="container" >
+                        <div class="row"></div>
+                    </div>
+                </section>
+                <section id="login">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6 mx-auto">
+                                <div className="card" style={style}>
+                                    <div style={{ background: 'rgb(190, 190, 190)' }} className="card-header">
+                                        <h4>Account Login</h4>
+                                    </div>
+                                    <div className="card-body">
+                                      
+                                            <div className="form-group">
+                                                <label for="email">Username</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    onChange={(e) => this.universalChangeHandler('user_name', e.target.value)}
+                                                    value={user_name}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label for="email">Email</label>
+                                                <input
+                                                    type="email"
+                                                    className="form-control"
+                                                    onChange={(e) => this.universalChangeHandler('email', e.target.value)}
+                                                    value={email}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label for="password">Password</label>
+                                                <input
+                                                    type="password"
+                                                    className="form-control"
+                                                    onChange={(e) => this.universalChangeHandler('password', e.target.value)}
+                                                    value={password}
+                                                />
+                                            </div>
+                                            <input type="Submit" value="Login" onClick={() => this.login()} className="btn btn-block" style={{ background: 'rgba(226,62,62,1)' }} />
+                                            <Link to='/Register'><button className='btn btn-block' style={{ marginTop: "5px", background: 'rgb(190, 190, 190)' }}> Register </button></Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </section>
+            </div>
         );
     }
 }

@@ -30,27 +30,28 @@ class Register extends Component {
     }
 
     async register() {
-        const { email, 
-                first_name, 
-                last_name, 
-                user_name, 
-                password, 
-                sex, 
-                profile_picture } = this.state;
+        const { email,
+            first_name,
+            last_name,
+            user_name,
+            password,
+            sex,
+            profile_picture } = this.state;
         console.log(this.state);
-        await axios.post('/auth/register', { 
-            user_name: user_name, 
-            password: password, 
-            email: email, 
-            first_name: first_name, 
-            last_name: last_name, 
-            profile_picture: profile_picture, 
-            sex: sex })
-            .then( res => {
+        await axios.post('/auth/register', {
+            user_name: user_name,
+            password: password,
+            email: email,
+            first_name: first_name,
+            last_name: last_name,
+            profile_picture: profile_picture,
+            sex: sex
+        })
+            .then(res => {
                 console.log(res);
                 this.props.setRegisterUser(res.data);
                 this.props.history.push('/ProfilePage');
-        });
+            });
     }
 
     universalChangeHandler(property, value) {
@@ -61,72 +62,90 @@ class Register extends Component {
 
     render() {
         const { user_name,
-                email,
-                first_name,
-                last_name,
-                sex,
-                profile_picture,
-                password } = this.state;
+            email,
+            first_name,
+            last_name,
+            sex,
+            profile_picture,
+            password } = this.state;
+
+        let styles = {
+            background: 'linear-gradient(0deg, rgba(130, 130, 130, 1) 0%, rgba(226, 62, 62, 1) 100%)'
+                }
+        let style = {
+            background: 'lightgray'
+        };
         return (
-            <div className='register-page'>
-                        <div> 
-                            <h1> Fitness Maestro </h1> 
-                        </div>                   
-                        <div id='registration-card'>       
-                            <div>
-                                <h2> Register </h2>
-                            </div>                  
-                            <div>
-                                Username:
-                                <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='register-input' value={user_name} />
-                            </div>                               
-                            <div>
-                                Email:
-                                <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='text' className='register-input' value={email} />
-                            </div>                               
-                            <div>
-                                Password:
-                                <input onChange={(e) => this.universalChangeHandler('password', e.target.value)} type='password' className='register-input' value={password} />
-                            </div>
-                            <div>
-                                First Name:
-                                <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='register-input' value={first_name} />
-                            </div>                              
-                            <div>
-                                Last Name:
-                                <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='register-input' value={last_name} />
-                            </div>                 
-                            <div>
-                                Sex:
-                                <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
-                                    <option defaultValue="Male / Female" selected={true}> Male / Female </option>
-                                    <option value={sex}> Male </option>
-                                    <option value={sex}> Female </option>
-                                </select>
-                            </div>
-                            <div>
-                                Profile Picture:
-                                <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='register-input' value={profile_picture} />
-                            </div>        
-                            <div className='submit-button'>
-                                {/* <Link to='/ProfilePage'> */}
-                                    <button onClick={() => this.register()} className='register-button'> Submit </button> 
-                                    {/* </Link> */}
+            <div className='register-page' style={styles}>
+                <section id="actions" className="py-4 mb-4 bg-light">
+                    <div className="container">
+                        <div className="row">
+
+                        </div>
+                    </div>
+                </section>
+                <section id="login">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6 mx-auto">
+                                <div className="card" style={style}>
+                                    <div className="card-header" style={{background: 'rgb(190, 190, 190)'}}>
+                                        <h4>Register</h4>
+                                    </div>
+                                    <div className="card-body">
+                                            <div className="form-group">
+                                                <label>Username</label>
+                                                <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} value={user_name} />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" onChange={(e) => this.universalChangeHandler('email', e.target.value)} value={email}/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Password</label>
+                                                <input type="password" className="form-control" onChange={(e) => this.universalChangeHandler('password', e.target.value)} value={password}/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} value={first_name}/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} value={last_name}/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Sex</label>
+                                                <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
+                                                <option defaultValue="Male / Female" selected={true}> Male / Female </option>
+                                                <option value={sex}> Male </option>
+                                                <option value={sex}> Female </option>
+                                                </select>
+                                            </div> 
+                                            <div className="form-group">
+                                                <label>Profile Picture</label>
+                                                <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} value={profile_picture} />
+                                            </div>
+                                            <input type="Submit" value="Submit" onClick={() => this.register()} className="btn btn-block" style={{background: 'rgba(226,62,62,1)'}} />
+                                            {/* <button onClick={() => this.register()} className='register-button'> Submit </button> */}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-        );
-    }
-}
-
+                        </section>
+                    </div>
+                );
+            }
+        }
+        
 const mapStateToProps = (state) => {
     return {
-        user: state.user
-    }
-}
-
+                    user: state.user
+            }
+        }
+        
 const mapDispatchToProps = {
-    setRegisterUser: setRegisterUser
-}
-
+                    setRegisterUser: setRegisterUser
+            }
+            
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

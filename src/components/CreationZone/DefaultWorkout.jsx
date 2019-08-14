@@ -19,7 +19,7 @@ export default class DefaultWorkout extends Component {
             this.setState({defaultWorkouts: res.data});
             console.log(this.state.defaultWorkouts);
         });
-    }
+    }    
     render() {
         let workout = this.state.defaultWorkouts;
         return (
@@ -30,7 +30,7 @@ export default class DefaultWorkout extends Component {
                             <h3 className="card-header">{workout.workout_name}</h3>
                             <div className="card-body">
                                 <p>{workout.required_equipment}</p>
-                                <img src={workout.image_url} /> 
+                                <img src={workout.image_url} style={{width: "200px", height: "200px"}} /> 
                             </div>
                         </div>
                     </div>
@@ -39,3 +39,6 @@ export default class DefaultWorkout extends Component {
         )
     }
 }
+
+
+
