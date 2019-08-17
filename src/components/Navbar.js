@@ -13,12 +13,12 @@ let navStyles = {
 };
 
 let fontStyle = {
-    fontFamily: "'Titillium Web', sans-serif",
+    fontFamily: "'Quicksand', sans-serif",
     fontWeight: '800'
 };
 
 let navTextStyles = {
-    fontFamily: "'Titillium Web', sans-serif",
+    fontFamily: "'Quicksand', sans-serif",
     textDecoration: 'underline',
     fontSize: '20px',
     fontWeight: '700',
