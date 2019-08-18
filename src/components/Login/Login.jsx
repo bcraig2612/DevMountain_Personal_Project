@@ -47,7 +47,6 @@ class Login extends Component {
         });
     }
 
-
     render() {
         const { user_name,
             email,
@@ -62,17 +61,17 @@ class Login extends Component {
         };
 
         let titleTextStyles = {
-            fontFamily: "'Titillium Web', sans-serif",
+            fontFamily: "'Quicksand', sans-serif",
             textDecoration: 'underline',
             fontSize: '32px',
             fontWeight: 700
         };
 
         let normalTextStyles = {
-            fontFamily: "'Titillium Web', sans-serif",
+           fontFamily: "'Quicksand', sans-serif",
             textDecoration: 'underline',
             fontSize: '20px',
-            fontWeight: 600
+             fontWeight: 400
         };
         
         let loginStyles = {
@@ -80,7 +79,7 @@ class Login extends Component {
             marginTop: '5px',
             fontSize: '17px',
             fontWeight: 800,
-            fontFamily: "'Titillium Web', sans-serif"
+            fontFamily: "'Quicksand', sans-serif"
         };
 
         let registerStyles = {
@@ -88,7 +87,7 @@ class Login extends Component {
              marginTop: '5px',
             fontSize: '17px',
             fontWeight: 800,
-            fontFamily: "'Titillium Web', sans-serif"
+            fontFamily: "'Quicksand', sans-serif"            
         };
         
         return (

@@ -105,133 +105,136 @@ export class UserDetails extends Component {
             background: 'lightgray'
         };
 
+        let fontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 400
+        };
+
         return (
             <div className='user-page'>
-                {/* <section id="actions" className="py-4 xs-4 bg-dark"> */}
                 <div className="container">
                 </div>
-                {/* </section> */}
                     <section id="details-body">
                     <div className="container">
                     <div className="row">
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
                     <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                        <h3>User Details</h3>
+                        <h3 style={fontStyle}>User Details</h3>
                     </div>
 
                     <div className="card-body">
 
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Height Feet:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('height_feet', e.target.value)} type='number' className='details-input' value={height_feet} />
                         </div>
 
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Height Inches:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('height_inches', e.target.value)} type='number' className='details-input' value={height_inches} />
                         </div>
                     
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Weight:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('weight', e.target.value)} type='number' className='details-input' value={weight} />
                         </div>
                     
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 BMI:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('bmi', e.target.value)} type='number' className='details-input' value={bmi} />
                         </div>
                     
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Body Fat Percentage:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('body_fat_percentage', e.target.value)} type='number' className='details-input' value={body_fat_percentage} />
                         </div>
                   
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Bench Press Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('bench_press_max', e.target.value)} type='number' className='details-input' value={bench_press_max} />
                         </div>
                 
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Squat Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('squat_max', e.target.value)} type='number' className='details-input' value={squat_max} />
                         </div>
                   
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Deadlift Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('deadlift_max', e.target.value)} type='number' className='details-input' value={deadlift_max} />
                         </div>
 
                         <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                            <h5>User Body Measurements</h5>
+                            <h5 style={fontStyle}>User Body Measurements</h5>
                         </div>
                   
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Neck: 
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('neck_measurement', e.target.value)} type='number' className='details-input' value={neck_measurement} />
                         </div>
                     
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Shoulders:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('shoulders_measurement', e.target.value)} type='number' className='details-input' value={shoulder_measurement} />
                         </div>
                   
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Biceps:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('upper_arms_measurement', e.target.value)} type='number' className='details-input' value={upper_arms_measurement} />
                         </div>
                  
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Chest:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('chest_measurement', e.target.value)} type='number' className='details-input' value={chest_measurement} />
                         </div>
                    
                     <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Waist:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('waist_measurement', e.target.value)} type='number' className='details-input' value={waist_measurement} />
                         </div>
                   
                     <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Thighs:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('thighs_measurement', e.target.value)} type='number' className='details-input' value={thighs_measurement} />
                         </div>
                 
                     <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Calves:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('calves_measurement', e.target.value)} type='number' className='details-input' value={calves_measurement} />
                         </div>   
                          <div className='details-button'>
-                            <button onClick={() => this.updateDetails()} className='update-details'> Submit </button> 
+                            <button onClick={() => this.updateDetails()} className='update-details' style={fontStyle}> Submit </button> 
                         </div>           
                     </div> 
                     </div>

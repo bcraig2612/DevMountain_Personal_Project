@@ -75,6 +75,10 @@ class Register extends Component {
         let style = {
             background: 'lightgray'
         };
+        let fontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 400
+        };
         return (
             <div className='register-page' style={styles}>
                 <section id="actions" className="py-4 mb-4 bg-light">
@@ -90,42 +94,42 @@ class Register extends Component {
                             <div className="col-md-6 mx-auto">
                                 <div className="card" style={style}>
                                     <div className="card-header" style={{background: 'rgb(190, 190, 190)'}}>
-                                        <h4>Register</h4>
+                                        <h4 style={fontStyle}>Register</h4>
                                     </div>
                                     <div className="card-body">
                                             <div className="form-group">
-                                                <label>Username</label>
+                                                <label style={fontStyle}>Username</label>
                                                 <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} value={user_name} />
                                             </div>
                                             <div className="form-group">
-                                                <label>Email</label>
+                                                <label style={fontStyle}>Email</label>
                                                 <input type="email" class="form-control" onChange={(e) => this.universalChangeHandler('email', e.target.value)} value={email}/>
                                             </div>
                                             <div className="form-group">
-                                                <label>Password</label>
+                                                <label style={fontStyle}>Password</label>
                                                 <input type="password" className="form-control" onChange={(e) => this.universalChangeHandler('password', e.target.value)} value={password}/>
                                             </div>
                                             <div class="form-group">
-                                                <label>First Name</label>
+                                                <label style={fontStyle}>First Name</label>
                                                 <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} value={first_name}/>
                                             </div>
                                             <div className="form-group">
-                                                <label>Last Name</label>
+                                                <label style={fontStyle}>Last Name</label>
                                                 <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} value={last_name}/>
                                             </div>
                                             <div className="form-group">
-                                                <label>Sex</label>
+                                                <label style={fontStyle}>Sex</label>
                                                 <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
-                                                <option defaultValue="Male / Female" selected={true}> Male / Female </option>
-                                                <option value={sex}> Male </option>
-                                                <option value={sex}> Female </option>
+                                                <option defaultValue="Male / Female" selected={true} style={fontStyle}> Male / Female </option>
+                                                <option value={sex} style={fontStyle}> Male </option>
+                                                <option value={sex} style={fontStyle}> Female </option>
                                                 </select>
                                             </div> 
                                             <div className="form-group">
-                                                <label>Profile Picture</label>
+                                                <label style={fontStyle}>Profile Picture</label>
                                                 <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} value={profile_picture} />
                                             </div>
-                                            <input type="Submit" value="Submit" onClick={() => this.register()} className="btn btn-block" style={{background: 'rgba(226,62,62,1)'}} />
+                                            <input type="Submit" value="Submit" onClick={() => this.register()} className="btn btn-block" style={{background: 'rgba(226,62,62,1)', fontStyle}} />
                                             {/* <button onClick={() => this.register()} className='register-button'> Submit </button> */}
                                     </div>
                                 </div>

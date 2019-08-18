@@ -14,20 +14,16 @@ let navStyles = {
 
 let fontStyle = {
     fontFamily: "'Quicksand', sans-serif",
-    fontWeight: '800'
+    fontWeight: 800
 };
 
 let navTextStyles = {
     fontFamily: "'Quicksand', sans-serif",
     textDecoration: 'underline',
     fontSize: '20px',
-    fontWeight: '700',
+    fontWeight: 700,
     color: 'rgba(226,62,62,1)'
 }
-
-// let buttonStyle = {
-//     color: 'black'
-// };
 
 const Navbar = () => {
     return (

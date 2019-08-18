@@ -80,50 +80,52 @@ class UserInfo extends Component {
         let style = {
             background: 'lightgray'
         };
+           let fontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 400
+        };
 
         return (
             <div className='user-page'>
-                {/* <section id="actions" className="py-4 mb-4 bg-light"> */}
                 <div className="container">
                 </div>
-                {/* </section> */}
                     <section id="info-body">
                     <div className="container">
                     <div className="row">
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
                     <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                        <h3>User Info</h3>
+                        <h3 style={fontStyle}>User Info</h3>
                     </div>
 
                     <div className="card-body">
 
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Email:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('email', e.target.value)} type='email' className='info-input' value={email} />
                         </div>
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 First Name:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('first_name', e.target.value)} type='text' className='info-input' value={first_name} />
                         </div>
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Last Name:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('last_name', e.target.value)} type='text' className='info-input' value={last_name} />
                         </div>
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 User Name:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('user_name', e.target.value)} type='text' className='info-input' value={user_name} />
                         </div>
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Sex:
                             </label>
                             <select onChange={(e) => this.universalChangeHandler('sex', e.target.value)} name="sex" id="sex">
@@ -133,13 +135,13 @@ class UserInfo extends Component {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label>
+                            <label style={fontStyle}>
                                 Profile Picture:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                         </div>
                         <div className='info-button'>
-                            <button onClick={() => this.updateInfo()} className='update-info'> Submit </button>
+                            <button onClick={() => this.updateInfo()} className='update-info' style={fontStyle}> Submit </button>
                         </div>
                     </div> 
                     </div>
