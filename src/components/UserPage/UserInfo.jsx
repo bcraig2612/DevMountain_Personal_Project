@@ -82,7 +82,18 @@ class UserInfo extends Component {
         };
            let fontStyle = {
             fontFamily: "'Quicksand', sans-serif",
-            fontWeight: 400
+            fontSize: '18px',
+            fontWeight: 500
+        };
+           let buttonFontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontSize: '18px',
+            fontWeight: 600
+        };
+           let titleFontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 600, 
+            fontSize: '36px'
         };
 
         return (
@@ -95,7 +106,7 @@ class UserInfo extends Component {
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
                     <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                        <h3 style={fontStyle}>User Info</h3>
+                        <h3 style={titleFontStyle}>User Info</h3>
                     </div>
 
                     <div className="card-body">
@@ -141,7 +152,7 @@ class UserInfo extends Component {
                             <input onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} type='text' className='info-input' value={profile_picture} />
                         </div>
                         <div className='info-button'>
-                            <button onClick={() => this.updateInfo()} className='update-info' style={fontStyle}> Submit </button>
+                            <button onClick={() => this.updateInfo()} className='update-info' style={buttonFontStyle}> Submit </button>
                         </div>
                     </div> 
                     </div>

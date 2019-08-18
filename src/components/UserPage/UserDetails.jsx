@@ -107,9 +107,20 @@ export class UserDetails extends Component {
 
         let fontStyle = {
             fontFamily: "'Quicksand', sans-serif",
-            fontWeight: 400
+            fontSize: '18px',
+            fontWeight: 500
         };
-
+        let buttonFontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontSize: '18px',
+            fontWeight: 600
+        };
+        let titleFontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 600, 
+            fontSize: '36px'
+        };
+ 
         return (
             <div className='user-page'>
                 <div className="container">
@@ -120,9 +131,9 @@ export class UserDetails extends Component {
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
                     <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                        <h3 style={fontStyle}>User Details</h3>
+                        <h3 style={titleFontStyle}>User Details</h3>
                     </div>
-
+                   
                     <div className="card-body">
 
                         <div className="form-group">
@@ -179,12 +190,30 @@ export class UserDetails extends Component {
                                 Deadlift Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('deadlift_max', e.target.value)} type='number' className='details-input' value={deadlift_max} />
-                        </div>
+                        </div>     
+                    </div> 
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
 
-                        <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
-                            <h5 style={fontStyle}>User Body Measurements</h5>
-                        </div>
-                  
+
+
+              <div className='user-page'>
+                <div className="container">
+                </div>
+                    <section id="details-body">
+                    <div className="container">
+                    <div className="row">
+                    <div className="col-md-6 mx-auto">
+                    <div className="card" style={style}>
+                    <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
+                        <h3 style={titleFontStyle}>User Measurements</h3>
+                    </div>
+                   
+                    <div className="card-body">
+
                         <div className="form-group">
                             <label style={fontStyle}>
                                 Neck: 
@@ -234,7 +263,7 @@ export class UserDetails extends Component {
                         <input onChange={(e) => this.universalChangeHandler('calves_measurement', e.target.value)} type='number' className='details-input' value={calves_measurement} />
                         </div>   
                          <div className='details-button'>
-                            <button onClick={() => this.updateDetails()} className='update-details' style={fontStyle}> Submit </button> 
+                            <button onClick={() => this.updateDetails()} className='update-details' style={buttonFontStyle}> Submit </button> 
                         </div>           
                     </div> 
                     </div>
@@ -242,6 +271,7 @@ export class UserDetails extends Component {
                     </div>
                     </div>
                     </section>
+                    </div>
                     </div>
         );
     }

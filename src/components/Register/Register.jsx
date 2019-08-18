@@ -71,13 +71,25 @@ class Register extends Component {
 
         let styles = {
             background: 'linear-gradient(0deg, rgba(130, 130, 130, 1) 0%, rgba(226, 62, 62, 1) 100%)'
-                }
+        };
+        let buttonStyle = {
+            background: 'rgba(226, 62, 62, 1)',
+            fontFamily: "'Quicksand', sans-serif",
+            fontSize: '18px',
+            fontWeight: 600
+        }
         let style = {
             background: 'lightgray'
         };
         let fontStyle = {
             fontFamily: "'Quicksand', sans-serif",
-            fontWeight: 400
+            fontSize: '18px',
+            fontWeight: 500
+        };
+        let titleFontStyle = {
+            fontFamily: "'Quicksand', sans-serif",
+            fontWeight: 600, 
+            fontSize: '36px'
         };
         return (
             <div className='register-page' style={styles}>
@@ -94,7 +106,7 @@ class Register extends Component {
                             <div className="col-md-6 mx-auto">
                                 <div className="card" style={style}>
                                     <div className="card-header" style={{background: 'rgb(190, 190, 190)'}}>
-                                        <h4 style={fontStyle}>Register</h4>
+                                        <h4 style={titleFontStyle}>Register</h4>
                                     </div>
                                     <div className="card-body">
                                             <div className="form-group">
@@ -129,8 +141,7 @@ class Register extends Component {
                                                 <label style={fontStyle}>Profile Picture</label>
                                                 <input type="text" className="form-control" onChange={(e) => this.universalChangeHandler('profile_picture', e.target.value)} value={profile_picture} />
                                             </div>
-                                            <input type="Submit" value="Submit" onClick={() => this.register()} className="btn btn-block" style={{background: 'rgba(226,62,62,1)', fontStyle}} />
-                                            {/* <button onClick={() => this.register()} className='register-button'> Submit </button> */}
+                                            <input type="Submit" value="Submit" onClick={() => this.register()} className="btn btn-block" style={buttonStyle} />
                                     </div>
                                 </div>
                             </div>
