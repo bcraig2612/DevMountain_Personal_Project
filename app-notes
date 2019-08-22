@@ -1,0 +1,3 @@
+to adjust background color, you have to go into index.css and adjust the background of html. that is for the bottom portion. 
+
+the left and right sides has to be adjusted in app.css as app > background-color "" 

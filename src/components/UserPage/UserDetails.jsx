@@ -130,62 +130,62 @@ export class UserDetails extends Component {
                     <div className="row">
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
-                    <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
+                    <div className="card-header">
                         <h3 style={titleFontStyle}>User Details</h3>
                     </div>
                    
                     <div className="card-body">
 
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Height Feet:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('height_feet', e.target.value)} type='number' className='details-input' value={height_feet} />
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Height Inches:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('height_inches', e.target.value)} type='number' className='details-input' value={height_inches} />
                         </div>
                     
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Weight:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('weight', e.target.value)} type='number' className='details-input' value={weight} />
                         </div>
                     
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 BMI:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('bmi', e.target.value)} type='number' className='details-input' value={bmi} />
                         </div>
                     
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Body Fat Percentage:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('body_fat_percentage', e.target.value)} type='number' className='details-input' value={body_fat_percentage} />
                         </div>
                   
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Bench Press Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('bench_press_max', e.target.value)} type='number' className='details-input' value={bench_press_max} />
                         </div>
                 
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Squat Max:
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('squat_max', e.target.value)} type='number' className='details-input' value={squat_max} />
                         </div>
                   
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Deadlift Max:
                             </label>
@@ -208,55 +208,55 @@ export class UserDetails extends Component {
                     <div className="row">
                     <div className="col-md-6 mx-auto">
                     <div className="card" style={style}>
-                    <div className="card-header" style={{background: 'rgba(226, 62, 62, 1)'}}>
+                    <div className="card-header">
                         <h3 style={titleFontStyle}>User Measurements</h3>
                     </div>
                    
                     <div className="card-body">
 
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Neck: 
                             </label>
                             <input onChange={(e) => this.universalChangeHandler('neck_measurement', e.target.value)} type='number' className='details-input' value={neck_measurement} />
                         </div>
                     
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Shoulders:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('shoulders_measurement', e.target.value)} type='number' className='details-input' value={shoulder_measurement} />
                         </div>
                   
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Biceps:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('upper_arms_measurement', e.target.value)} type='number' className='details-input' value={upper_arms_measurement} />
                         </div>
                  
-                        <div className="form-group">
+                        <div className="form-group-small">
                             <label style={fontStyle}>
                                 Chest:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('chest_measurement', e.target.value)} type='number' className='details-input' value={chest_measurement} />
                         </div>
                    
-                    <div className="form-group">
+                    <div className="form-group-small">
                             <label style={fontStyle}>
                                 Waist:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('waist_measurement', e.target.value)} type='number' className='details-input' value={waist_measurement} />
                         </div>
                   
-                    <div className="form-group">
+                    <div className="form-group-small">
                             <label style={fontStyle}>
                                 Thighs:
                             </label>
                         <input onChange={(e) => this.universalChangeHandler('thighs_measurement', e.target.value)} type='number' className='details-input' value={thighs_measurement} />
                         </div>
                 
-                    <div className="form-group">
+                    <div className="form-group-small">
                             <label style={fontStyle}>
                                 Calves:
                             </label>

@@ -7,14 +7,15 @@ let logoStyles = {
 };
 
 let navStyles = {
-    borderWidth: '5px',
+    borderWidth: '2px',
     borderStyle: 'inset',
     borderColor: 'rgb(190, 190, 190)',
 };
 
 let fontStyle = {
     fontFamily: "'Quicksand', sans-serif",
-    fontWeight: 800
+    fontWeight: 800,
+    color: 'white'
 };
 
 let navTextStyles = {
@@ -22,12 +23,12 @@ let navTextStyles = {
     textDecoration: 'underline',
     fontSize: '20px',
     fontWeight: 700,
-    color: 'rgba(226,62,62,1)'
+    color: 'white'
 }
 
 const Navbar = () => {
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0" style={navStyles}>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0" style={navStyles}>
             <div className="container">
                 <div className='navbar-logo'>
                     <h3 class='title' style={fontStyle}>
@@ -62,24 +63,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-// <div className="navbar" style={{ background: "#da7618" }}>
-
-
-//     <ul>
-//         <li>
-//             <Link to='/'><i class="fas fa-sign-in-alt"></i> Login </Link>
-//         </li>
-//         <li>
-//             <Link to='/Register'><i class="far fa-registered"></i> Register </Link>
-//         </li>
-//         <li>
-//             <Link to='/ProfilePage'><i className="fas fa-user"></i> My Profile </Link>
-//         </li>
-//         <li>
-//             <Link to='/CreationZone'><i className="fas fa-running"></i> Workout Routines </Link>
-//         </li>
-//         <li>
-//             <Link to='/'><i class="fas fa-sign-out-alt"></i> Logout </Link>
-//         </li>
-//     </ul>
-// </div>

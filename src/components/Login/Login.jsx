@@ -69,7 +69,6 @@ class Login extends Component {
 
         let normalTextStyles = {
            fontFamily: "'Quicksand', sans-serif",
-            textDecoration: 'underline',
             fontSize: '20px',
              fontWeight: 400
         };
@@ -91,12 +90,12 @@ class Login extends Component {
         };
         
         return (
-            <div style={styles}>
-                <section id="actions" class="py-4 mb-4 bg-light">
+            <div className='page' style={styles}>
+                {/* <section id="actions" class="py-4 mb-4 bg-dark"> */}
                     <div class="container" >
                         <div class="row"></div>
                     </div>
-                </section>
+                {/* </section> */}
                 <section id="login">
                     <div className="container">
                         <div className="row">
@@ -107,7 +106,7 @@ class Login extends Component {
                                     </div>
                                     <div className="card-body">
                                       
-                                            <div className="form-group">
+                                            <div className="form-group-small">
                                                 <label for="username" style={normalTextStyles}>Username</label>
                                                 <input
                                                     type="text"
@@ -116,7 +115,7 @@ class Login extends Component {
                                                     value={user_name}
                                                 />
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group-small">
                                                 <label for="email" style={normalTextStyles}>Email</label>
                                                 <input
                                                     type="email"
@@ -125,7 +124,7 @@ class Login extends Component {
                                                     value={email}
                                                     />
                                             </div>
-                                            <div className="form-group">
+                                            <div className="form-group-small">
                                                 <label for="password" style={normalTextStyles}>Password</label>
                                                 <input
                                                     type="password"
