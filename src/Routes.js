@@ -8,11 +8,11 @@ import DefaultWorkout from './components/CreationZone/DefaultWorkout';
 
 export default (
     <Switch>
-        <Route exact path='/' component={Login} />
-        <Route exact path='/Register' component={Register} />
+        <Route exact path='/' component={Register} />
+        <Route exact path='/Login' component={Login} />
         <Route exact path='/ProfilePage' component={ProfilePage} />
         <Route exact path='/CreationZone' component={CreationZone} />
         <Route exact path='/Workout/:id' component={DefaultWorkout} />
-        <Route path='*' render={() => {return <div> You are trying to visit a page that does not exist. </div>}} />
+        <Route path='*' render={() => { return <div> You are trying to visit a page that does not exist. </div> }} />
     </Switch>
 );
